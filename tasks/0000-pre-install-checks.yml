@@ -1,0 +1,14 @@
+---
+- name: Development Workspace Applications | Check OS compatibility
+  fail:
+    msg: "OS compatibility error"
+  when: ansible_os_family not in ['Debian', 'Archlinux']
+
+- name: Development Workspace Applications | Checking essential variables
+  assert:
+    that:
+      - "{{  item  }} is defined"
+      - "{{  item  }} != None"
+    fail_msg: "{{  item  }} is not defined, it should be present"
+    success_msg: "{{  item  }} is defined"
+  when: false

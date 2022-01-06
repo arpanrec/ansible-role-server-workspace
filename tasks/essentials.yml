@@ -1,0 +1,14 @@
+---
+- name: Development Workspace Applications | Install Packages Debian
+  when: ansible_os_family in ['Debian']
+  block:
+    - name: Development Workspace Applications | Installing packages for Debian
+      apt:
+        name: "{{  rv_server_ws_apps_def_packages_Debian  }}"
+
+- name: Development Workspace Applications | Install Packages/AUR Helper Archlinux
+  when: ansible_os_family in ['Archlinux']
+  block:
+    - name: Development Workspace Applications | Install Packages Archlinux
+      pacman:
+        name: "{{  rv_server_ws_apps_def_packages_Archlinux  }}"

@@ -1,0 +1,19 @@
+---
+# Install packages for workspace applications
+# rv_server_ws_apps_def_packages_{{  ansible_distribution  }}
+# Type: List<String>
+rv_server_ws_apps_def_packages_Debian:
+  - bash-completion
+  - python3-packaging
+  - python3-pip
+  - vim
+  - rclone
+  - git
+rv_server_ws_apps_def_packages_Archlinux:
+  - bash-completion
+  - python-pip
+  - python-packaging
+  - vim
+  - rclone
+  - git
+

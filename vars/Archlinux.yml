@@ -1,0 +1,8 @@
+---
+rv_server_ws_apps_def_java_packages:
+  - jdk11-openjdk
+  - maven
+  - groovy
+  - gradle
+  - gradle-src
+  - gradle-doc
