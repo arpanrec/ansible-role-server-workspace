@@ -9,6 +9,8 @@ rv_server_ws_apps_def_packages_Debian:
   - vim
   - rclone
   - git
+  - jq
+
 rv_server_ws_apps_def_packages_Archlinux:
   - bash-completion
   - python-pip
@@ -16,4 +18,4 @@ rv_server_ws_apps_def_packages_Archlinux:
   - vim
   - rclone
   - git
-
+  - jq
