@@ -7,5 +7,5 @@
 - name: Development Workspace Applications | Adding Java init scripts
   template:
     src: "init-profilescripts.sh.{{  ansible_os_family  }}.j2"
-    dest: /etc/profile.d/10-nebula-java-auto.sh
+    dest: /etc/profile.d/nebula-java-auto.sh
     mode: "0644"

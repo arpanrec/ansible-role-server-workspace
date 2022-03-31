@@ -29,9 +29,9 @@
 
 - name: Development Workspace Applications | Set user bin path and GPG tty
   blockinfile:
-    path: /etc/profile.d/10-nebula-sw-init-auto.sh
+    path: /etc/profile.d/nebula-sw-init-auto.sh
     create: yes
-    mode: "0755"
+    mode: "0644"
     marker: "# {mark} ANSIBLE MANAGED BLOCK :: Added by nebula server workspace setup"
     block: |
       export PATH=$HOME/.local/bin:$PATH:/usr/sbin
