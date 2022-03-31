@@ -7,11 +7,13 @@ Install server workspace apps (with tags)
 
 Role Variables
 --------------
-`rv_server_ws_apps_def_packages_{{  ansible_distribution  }}`
-  * Type: `List<String>`
-  * Required: `false`
-  * Default (rv_server_ws_apps_def_packages_Debian): ['rclone','openjdk-11-jdk','maven','groovy','gradle']
-  * Description: Install packages for workspace applications
+
+`rv_server_ws_apps_def_packages`
+
+* Type: `List<String>`
+* Required: `false`
+* Default: ['rclone','openjdk-11-jdk','maven','groovy','gradle']
+* Description: Install packages for workspace applications
 
 Example Playbook
 ----------------

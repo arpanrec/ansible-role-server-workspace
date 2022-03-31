@@ -1,6 +1,0 @@
----
-rv_server_ws_apps_def_java_packages:
-  - openjdk-17-jdk
-  - maven
-  - groovy
-  - gradle

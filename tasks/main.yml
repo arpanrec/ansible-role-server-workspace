@@ -8,11 +8,6 @@
       tags:
         - always
 
-- name: Development Workspace Applications | Include Vars for {{  ansible_os_family  }}
-  include_vars: "{{  ansible_os_family  }}.yml"
-  tags:
-    - always
-
 - name: Development Workspace Applications | Install Essentials
   include_tasks: essentials.yml
   args:

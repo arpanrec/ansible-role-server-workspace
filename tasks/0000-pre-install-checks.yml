@@ -2,7 +2,7 @@
 - name: Development Workspace Applications | Check OS compatibility
   fail:
     msg: "OS compatibility error"
-  when: ansible_os_family not in ['Debian', 'Archlinux']
+  when: ansible_os_family not in ['Debian']
 
 - name: Development Workspace Applications | Checking essential variables
   assert:
