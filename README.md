@@ -30,7 +30,7 @@ Testing
 Prerequisite: `docker`, `python3-pip`
 
 ```bash
-git clone git@github.com:arpanrec/ansible-role-user-add.git arpanrec.server_workspace
+git clone git@github.com:arpanrec/ansible-role-server-workspace.git arpanrec.server_workspace
 cd arpanrec.server_workspace
 pip install --user --upgrade virtualenv
 virtualenv venv
