@@ -1,29 +1,38 @@
-Development apps
-=========
+# Development apps
 
-Install server workspace apps (with tags)
+<details>
+<summary>Track Dotfiles With GIT</summary>
 
-Role Variables
---------------
+## Track Dotfiles With GIT
 
-`rv_server_ws_apps_def_packages`
+Track your dotfiles from [GitHub](https://github.com/arpanrec/dotfiles). You can track these files with below command. (Follow the git commands for reference)
 
-* Type: `List<String>`
-* Required: `false`
-* Default: ['rclone','openjdk-11-jdk','maven','groovy','gradle']
-* Description: Install packages for workspace applications
-
-Example Playbook
-----------------
-
+```shell
+config pull # To pull the changes
+config add <filepath> # Track new files/Changes
+config commit -m"New Config added/Changed" # Track new files
+config push # Push to remote
 ```
-- name: Install dev workspace apps
+
+Variables:
+
+- `pv_ua_dotfiles_git_remote`
+  - Description: Git remote
+  - Default: [arpanrec/dotfiles](https://github.com/arpanrec/dotfiles)
+- `pv_ua_dotfiles_bare_relative_dir`
+  - Description: Git bare directory in `{{ pv_ua_user_home_dir }}`
+  - Default: `.dotfiles`
+
+### Example Playbook
+
+```yaml
+- name: "Include Dotfiles"
   include_role:
-    name: server_workspace
+    name: "arpanrec.server_workspace"
+    tasks_from: dotfiles
 ```
 
-Testing
--------
+### Testing
 
 Prerequisite: `docker`, `python3-pip`
 
@@ -34,10 +43,13 @@ python3 -m pip install --user --upgrade virtualenv
 virtualenv --python $(readlink -f $(which python3)) venv
 source venv/bin/activate
 venv/bin/python3 -m pip install -r requirements.txt --upgrade
-molecule test
+molecule test -s dotfiles
 ```
 
-License
+</details>
+
+## License
+
 -------
 
 `MIT`
