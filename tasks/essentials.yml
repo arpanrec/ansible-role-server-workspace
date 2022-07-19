@@ -1,4 +1,0 @@
----
-- name: Development Workspace Applications | Installing packages for Debian
-  apt:
-    name: "{{  rv_server_ws_apps_def_packages  }}"

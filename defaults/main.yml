@@ -1,9 +1,3 @@
 ---
-rv_server_ws_apps_def_packages:
-  - bash-completion
-  - python3-packaging
-  - python3-pip
-  - vim
-  - rclone
-  - git
-  - jq
+pv_ua_dotfiles_git_remote: https://github.com/arpanrec/dotfiles.git
+pv_ua_dotfiles_bare_relative_dir: .dotfiles

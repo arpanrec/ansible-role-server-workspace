@@ -1,0 +1,52 @@
+- name:  USERAPPS | Dotfiles | Prerequisites
+  import_tasks: prerequisites.yml
+
+- name: USERAPPS | Dotfiles | Cloning git bare
+  ansible.builtin.git:
+    single_branch: true
+    repo: "{{  pv_ua_dotfiles_git_remote  }}"
+    dest: "{{  pv_ua_user_home_dir  }}/{{  pv_ua_dotfiles_bare_relative_dir  }}"
+    bare: true
+  register: pv_ua_dotrepo_update
+
+- name: USERAPPS | Dotfiles | Set git config
+  ansible.builtin.template:
+    src: templates/dotfiles.gitconfig.j2
+    dest: "{{  pv_ua_user_home_dir  }}/{{  pv_ua_dotfiles_bare_relative_dir  }}/config"
+    mode: "0644"
+
+- name: USERAPPS | Dotfiles | Check if  ~/.aliasrc is present
+  stat:
+    path: "{{  pv_ua_user_home_dir  }}/.aliasrc"
+  register: pv_ua_dotfiles_aliasrc_stat
+
+- name: USERAPPS | Dotfiles | Ensure config alias is set in ~/.aliasrc
+  when: pv_ua_dotfiles_aliasrc_stat.stat.exists
+  ansible.builtin.lineinfile:
+    path: "{{  pv_ua_user_home_dir  }}/.aliasrc"
+    line: 'alias config=''git --git-dir="$HOME/{{  pv_ua_dotfiles_bare_relative_dir  }}" --work-tree=$HOME'''
+
+- name: USERAPPS | Dotfiles | When exporter is not present
+  when: not pv_ua_dotfiles_aliasrc_stat.stat.exists
+  block:
+    - name: USERAPPS | Dotfiles | Check shell rc files
+      stat:
+        path: "{{  item  }}"
+      register: pv_ua_dotfiles_tmp_shell_rc_stat
+      with_items:
+        - "{{  pv_ua_user_home_dir  }}/.bashrc"
+        - "{{  pv_ua_user_home_dir  }}/.zshrc"
+
+    # - name: USERAPPS | Dotfiles | Creating shell rc files
+    #   file:
+    #     path: "{{  item.stat.path  }}"
+    #     state: touch
+    #   when: not item.stat.exists
+    #   loop: "{{  pv_ua_dotfiles_tmp_shell_rc_stat.results  }}"
+
+    - name: USERAPPS | Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
+      ansible.builtin.lineinfile:
+        path: "{{  item.stat.path  }}"
+        line: 'alias config=''git --git-dir="$HOME/{{  pv_ua_dotfiles_bare_relative_dir  }}" --work-tree=$HOME'''
+      loop: "{{  pv_ua_dotfiles_tmp_shell_rc_stat.results  }}"
+      when: item.stat.exists
