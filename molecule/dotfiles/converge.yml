@@ -1,8 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include arpanrec.server_workspace"
-      include_role:
-        name: "arpanrec.server_workspace"
-        tasks_from: dotfiles

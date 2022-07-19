@@ -2,9 +2,12 @@
 dependency:
   name: galaxy
 driver:
-  name: delegated
+  name: docker
 platforms:
-  - name: instance
+  - name: debian
+    image: debian
+    dockerfile: Dockerfile.j2
+    pre_build_image: false
 provisioner:
   name: ansible
 verifier:
