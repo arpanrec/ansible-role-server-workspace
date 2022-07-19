@@ -14,7 +14,7 @@ config commit -m"New Config added/Changed" # Track new files
 config push # Push to remote
 ```
 
-Variables:
+### Variables
 
 - `pv_ua_dotfiles_git_remote`
   - Description: Git remote
