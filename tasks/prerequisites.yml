@@ -1,3 +1,18 @@
+- name: USERAPPS | Prerequisites | Fail if Root User
+  ansible.builtin.shell: whoami
+  register: rl_sw_current_shelluser_shell_result
+  failed_when: rl_sw_current_shelluser_shell_result.stdout == "root"
+  changed_when: false
+
+- name: USERAPPS | Prerequisites | Packages are present
+  ansible.builtin.shell:
+    cmd: "command -v {{  item  }} >/dev/null 2>&1"
+  with_items:
+    - git
+
+- name: USERAPPS | Prerequisites | Gather Facts
+  ansible.builtin.setup:
+
 - name: USERAPPS | Prerequisites | Create a directory if it does not exist
   ansible.builtin.file:
     path: "{{  item  }}"
@@ -15,9 +30,3 @@
     - "{{  pv_ua_user_tmp_dir  }}"
     - "{{  pv_ua_user_share_dir  }}/konsole"
     - "{{  pv_ua_user_share_dir  }}/fonts"
-
-- name: USERAPPS | Prerequisites | Packages are present
-  shell:
-    cmd: "command -v {{  item  }} >/dev/null 2>&1"
-  with_items:
-    - git
