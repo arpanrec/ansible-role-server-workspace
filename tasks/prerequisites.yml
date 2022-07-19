@@ -1,0 +1,23 @@
+- name: USERAPPS | Prerequisites | Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{  item  }}"
+    state: directory
+  with_items:
+    - "{{  pv_ua_user_share_dir  }}/applications"
+    - "{{  pv_ua_user_bin_dir  }}"
+    - "{{  pv_ua_user_share_dir  }}/themes"
+    - "{{  pv_ua_user_share_dir  }}/plasma/desktoptheme"
+    - "{{  pv_ua_user_share_dir  }}/aurorae/themes"
+    - "{{  pv_ua_user_share_dir  }}/color-schemes"
+    - "{{  pv_ua_user_share_dir  }}/plasma/look-and-feel"
+    - "{{  pv_ua_user_config_dir  }}/Kvantum"
+    - "{{  pv_ua_user_config_dir  }}/konsave/profiles"
+    - "{{  pv_ua_user_tmp_dir  }}"
+    - "{{  pv_ua_user_share_dir  }}/konsole"
+    - "{{  pv_ua_user_share_dir  }}/fonts"
+
+- name: USERAPPS | Prerequisites | Packages are present
+  shell:
+    cmd: "command -v {{  item  }} >/dev/null 2>&1"
+  with_items:
+    - git
