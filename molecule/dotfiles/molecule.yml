@@ -10,5 +10,15 @@ platforms:
     pre_build_image: false
 provisioner:
   name: ansible
+  playbooks:
+    converge: converge.yml
+scenario:
+  converge_sequence:
+    - converge
+  test_sequence:
+    - create
+    - converge
+    - idempotence
+    - destroy
 verifier:
   name: ansible
