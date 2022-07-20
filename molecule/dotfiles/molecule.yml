@@ -16,10 +16,12 @@ scenario:
   converge_sequence:
     - converge
   test_sequence:
+    - create
     - lint
     - syntax
     - converge
     - idempotence
     - side_effect
+    - destroy
 verifier:
   name: ansible
