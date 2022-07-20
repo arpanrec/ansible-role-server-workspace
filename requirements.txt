@@ -1,5 +1,4 @@
 ansible
 jmespath
 lxml
-pip
 molecule-docker
