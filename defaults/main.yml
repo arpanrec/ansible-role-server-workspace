@@ -11,3 +11,6 @@ pv_ua_dotfiles_bare_relative_dir: .dotfiles
 
 pv_ua_jdk_install_path: "{{  pv_ua_user_share_dir  }}/java"
 pv_ua_jdk_version: 17
+
+pv_ua_nodejs_install_path: "{{  pv_ua_user_share_dir  }}/node"
+pv_ua_nodejs_version: 16

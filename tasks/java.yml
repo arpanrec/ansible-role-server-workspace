@@ -1,5 +1,5 @@
 ---
-- name: USERAPPS | Scripts | Prerequisites
+- name: USERAPPS | Oracle JDK | Prerequisites
   import_tasks: prerequisites.yml
 
 - name: USERAPPS | Oracle JDK | Set Download URL

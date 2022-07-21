@@ -129,6 +129,47 @@ molecule test -s java
 
 </details>
 
+<details>
+<summary>NodeJS</summary>
+
+## NodeJS
+
+Install NodeJS in user space
+
+### Variables NodeJS
+
+- `pv_ua_nodejs_install_path`
+  - Description: Install path for nodejs
+  - Default: "{{  pv_ua_user_share_dir  }}/node"
+- `pv_ua_nodejs_version`
+  - Description: Major node Release version
+  - Default: 16
+
+### Example Playbook NodeJS
+
+```yaml
+- name: "Include NodeJS"
+  include_role:
+    name: "arpanrec.server_workspace"
+    tasks_from: nodejs
+```
+
+### Testing NodeJS
+
+Prerequisite: `docker`, `python3-pip`
+
+```bash
+git clone git@github.com:arpanrec/ansible-role-server-workspace.git arpanrec.server_workspace
+cd arpanrec.server_workspace
+python3 -m pip install --user --upgrade virtualenv
+virtualenv --python $(readlink -f $(which python3)) venv
+source venv/bin/activate
+venv/bin/python3 -m pip install -r requirements.txt --upgrade
+molecule test -s nodejs
+```
+
+</details>
+
 ## License
 
 ---
