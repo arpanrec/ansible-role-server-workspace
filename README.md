@@ -23,7 +23,7 @@ config push # Push to remote
   - Description: Git bare directory in `{{ pv_ua_user_home_dir }}`
   - Default: `.dotfiles`
 
-### Example Playbook
+### Example Playbook dotfiles
 
 ```yaml
 - name: "Include Dotfiles"
@@ -32,7 +32,7 @@ config push # Push to remote
     tasks_from: dotfiles
 ```
 
-### Testing
+### Testing dotfiles
 
 Prerequisite: `docker`, `python3-pip`
 
@@ -44,6 +44,46 @@ virtualenv --python $(readlink -f $(which python3)) venv
 source venv/bin/activate
 venv/bin/python3 -m pip install -r requirements.txt --upgrade
 molecule test -s dotfiles
+```
+
+</details>
+
+<details>
+<summary>Utility Scripts</summary>
+
+## Utility Scripts
+
+---
+
+Tag: `scripts`
+
+Install [Utility Scripts](https://github.com/arpanrec/util-scripts/tree/main/bin) to `{{ pv_ua_user_bin_dir }}`
+
+Variables:
+
+- Not Applicable
+  
+### Example Playbook util-scripts
+
+```yaml
+- name: "Include Dotfiles"
+  include_role:
+    name: "arpanrec.server_workspace"
+    tasks_from: util-scripts
+```
+
+### Testing util-scripts
+
+Prerequisite: `docker`, `python3-pip`
+
+```bash
+git clone git@github.com:arpanrec/ansible-role-server-workspace.git arpanrec.server_workspace
+cd arpanrec.server_workspace
+python3 -m pip install --user --upgrade virtualenv
+virtualenv --python $(readlink -f $(which python3)) venv
+source venv/bin/activate
+venv/bin/python3 -m pip install -r requirements.txt --upgrade
+molecule test -s util-scripts
 ```
 
 </details>

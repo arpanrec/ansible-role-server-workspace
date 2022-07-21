@@ -1,4 +1,4 @@
-- name:  USERAPPS | Dotfiles | Prerequisites
+- name: USERAPPS | Dotfiles | Prerequisites
   import_tasks: prerequisites.yml
 
 - name: USERAPPS | Dotfiles | Cloning git bare

@@ -1,0 +1,18 @@
+---
+- name: USERAPPS | Scripts | Prerequisites
+  import_tasks: prerequisites.yml
+
+- name: USERAPPS | Scripts | Git Clone
+  ansible.builtin.git:
+    single_branch: true
+    repo: "https://github.com/arpanrec/util-scripts.git"
+    dest: "{{  pv_ua_user_tmp_dir  }}/arpanrec-util-scripts-git"
+    depth: 1
+  register: pv_ua_user_updated
+
+- name: USERAPPS | Scripts | Copy Resources
+  when: pv_ua_user_updated.changed
+  ansible.builtin.copy:
+    src: "{{  pv_ua_user_tmp_dir  }}/arpanrec-util-scripts-git/bin/"
+    dest: "{{  pv_ua_user_bin_dir  }}/"
+    remote_src: true
