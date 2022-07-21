@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: "Include Utils-scripts"
+    - name: "Include Terminal Themes"
       include_role:
         name: "arpanrec.server_workspace"
-        tasks_from: utils-scripts
+        tasks_from: terminal_themes
