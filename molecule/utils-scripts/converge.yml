@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: "Include Utils-scripts"
+      include_role:
+        name: "arpanrec.server_workspace"
+        tasks_from: utils-scripts

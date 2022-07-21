@@ -23,18 +23,22 @@ jobs:
       uses: actions/checkout@v3
       with:
         path: 'arpanrec.server_workspace'
-      
+
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest ansible jmespath lxml molecule-docker molecule[docker]
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        
+
     - name: Test dotfiles
       run: |
         molecule test -s dotfiles
+
+    - name: Test utils-scripts
+      run: |
+        molecule test -s utils-scripts

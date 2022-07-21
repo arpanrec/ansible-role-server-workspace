@@ -5,8 +5,3 @@ pv_ua_user_local_dir: "{{  pv_ua_user_home_dir  }}/.local"
 pv_ua_user_bin_dir: "{{  pv_ua_user_local_dir  }}/bin"
 pv_ua_user_share_dir: "{{  pv_ua_user_local_dir  }}/share"
 pv_ua_user_tmp_dir: "{{  pv_ua_user_home_dir  }}/.tmp"
-rv_server_ws_apps_def_java_packages:
-  - openjdk-17-jdk
-  - maven
-  - groovy
-  - gradle
