@@ -32,7 +32,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest ansible jmespath lxml molecule-docker molecule[docker]
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Test dotfiles
@@ -42,3 +41,7 @@ jobs:
     - name: Test utils-scripts
       run: |
         molecule test -s utils-scripts
+
+    - name: Test Java
+      run: |
+        molecule test -s java
