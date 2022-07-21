@@ -1,7 +1,5 @@
 name: Molecule Test on merge requests
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -45,3 +43,7 @@ jobs:
     - name: Test Java
       run: |
         molecule test -s java
+
+    - name: Test nodejs
+      run: |
+        molecule test -s nodejs
