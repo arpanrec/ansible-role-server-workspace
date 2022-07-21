@@ -42,3 +42,7 @@ jobs:
     - name: Test utils-scripts
       run: |
         molecule test -s utils-scripts
+
+    - name: Test Java
+      run: |
+        molecule test -s java

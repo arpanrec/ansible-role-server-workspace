@@ -1,3 +1,13 @@
 ---
+pv_ua_user_home_dir: "{{  ansible_facts.user_dir  }}"
+pv_ua_user_config_dir: "{{  pv_ua_user_home_dir  }}/.config"
+pv_ua_user_local_dir: "{{  pv_ua_user_home_dir  }}/.local"
+pv_ua_user_bin_dir: "{{  pv_ua_user_local_dir  }}/bin"
+pv_ua_user_share_dir: "{{  pv_ua_user_local_dir  }}/share"
+pv_ua_user_tmp_dir: "{{  pv_ua_user_home_dir  }}/.tmp"
+
 pv_ua_dotfiles_git_remote: https://github.com/arpanrec/dotfiles.git
 pv_ua_dotfiles_bare_relative_dir: .dotfiles
+
+pv_ua_jdk_install_path: "{{  pv_ua_user_share_dir  }}/java"
+pv_ua_jdk_version: 17
