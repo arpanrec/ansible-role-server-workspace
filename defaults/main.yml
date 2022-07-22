@@ -14,3 +14,6 @@ pv_ua_jdk_version: 17
 
 pv_ua_nodejs_install_path: "{{  pv_ua_user_share_dir  }}/node"
 pv_ua_nodejs_version: 16
+
+pv_ua_golang_install_path: "{{  pv_ua_user_share_dir  }}/go"
+pv_ua_golang_version: 1.17.7
