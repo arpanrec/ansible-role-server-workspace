@@ -55,8 +55,6 @@ molecule test -s dotfiles
 
 ---
 
-Tag: `scripts`
-
 Install [Utility Scripts](https://github.com/arpanrec/util-scripts/tree/main/bin) to `{{ pv_ua_user_bin_dir }}`
 
 Variables:
@@ -166,6 +164,49 @@ virtualenv --python $(readlink -f $(which python3)) venv
 source venv/bin/activate
 venv/bin/python3 -m pip install -r requirements.txt --upgrade
 molecule test -s nodejs
+```
+
+</details>
+
+</details>
+
+<details>
+<summary>Go Lang</summary>
+
+## Go Language
+
+Install Go Language in user space
+
+### Variables Go Language
+
+- `pv_ua_golang_install_path`
+  - Description: Install path for Go
+  - Default: "{{  pv_ua_user_share_dir  }}/go"
+- `pv_ua_golang_version`
+  - Description: Exact release version of go language
+  - Default: 1.17.7
+
+### Example Playbook Go Language
+
+```yaml
+- name: "Include Go Language"
+  include_role:
+    name: "arpanrec.server_workspace"
+    tasks_from: go
+```
+
+### Testing Go Language
+
+Prerequisite: `docker`, `python3-pip`
+
+```bash
+git clone git@github.com:arpanrec/ansible-role-server-workspace.git arpanrec.server_workspace
+cd arpanrec.server_workspace
+python3 -m pip install --user --upgrade virtualenv
+virtualenv --python $(readlink -f $(which python3)) venv
+source venv/bin/activate
+venv/bin/python3 -m pip install -r requirements.txt --upgrade
+molecule test -s go
 ```
 
 </details>

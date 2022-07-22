@@ -47,3 +47,7 @@ jobs:
     - name: Test nodejs
       run: |
         molecule test -s nodejs
+
+    - name: Test GO
+      run: |
+        molecule test -s go

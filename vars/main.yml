@@ -5,3 +5,8 @@ pv_ua_jdk_tarball_download_path: "{{  pv_ua_user_tmp_dir  }}/jdk-{{  pv_ua_jdk_v
 pv_ua_nodejs_download_url_x86_64_16: https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
 pv_ua_nodejs_download_url_aarch64_16: https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-arm64.tar.xz
 pv_ua_nodejs_tarball_download_path: "{{  pv_ua_user_tmp_dir  }}/node-{{  pv_ua_nodejs_version  }}.tar.xz"
+
+pv_ua_golang_tarball_download_path: "{{  pv_ua_user_tmp_dir  }}/go{{  pv_ua_golang_version  }}.linux.tar.gz"
+pv_ua_golang_download_url_arch_map:
+  aarch64: "https://go.dev/dl/go{{  pv_ua_golang_version|string  }}.linux-arm64.tar.gz"
+  x86_64: "https://go.dev/dl/go{{  pv_ua_golang_version|string  }}.linux-amd64.tar.gz"
