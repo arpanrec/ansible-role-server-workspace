@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: USERAPPS | Oracle JDK | Molecule | Import Roles for variables
+      import_role:
+        name: "arpanrec.server_workspace"
+        tasks_from: prerequisites
+
+    - name: USERAPPS | Oracle JDK | Molecule | Get javac version from shell
+      shell: |
+        javac --version
+      environment:
+        PATH: "{{  pv_ua_jdk_install_path  }}/bin:{{  ansible_env.PATH  }}"
+      register: pv_ua_java_version_shell_result
+      changed_when: false
+
+    - name: USERAPPS | Oracle JDK | Molecule | javac version from shell result
+      debug:
+        var: pv_ua_java_version_shell_result
+
+    - name: USERAPPS | Oracle JDK | Molecule | Fail if javac version is not present
+      assert:
+        that: pv_ua_java_version_shell_result.stdout is match("javac {{  pv_ua_jdk_version  }}.*")
+        success_msg: Java Version {{  pv_ua_jdk_version  }} is installed
+        fail_msg: Java Version {{  pv_ua_jdk_version  }} is not installed, Shell result {{  pv_ua_java_version_shell_result.stdout  }}
