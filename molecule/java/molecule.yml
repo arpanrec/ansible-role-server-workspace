@@ -12,12 +12,14 @@ provisioner:
   name: ansible
   playbooks:
     converge: converge.yml
+    verify: verify.yml
 scenario:
   converge_sequence:
     - converge
   test_sequence:
     - create
     - converge
+    - verify
     - idempotence
     - destroy
 verifier:
