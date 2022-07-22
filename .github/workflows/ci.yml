@@ -1,4 +1,4 @@
-name: Molecule Test on merge requests
+name: Molecule Test
 on:
   workflow_dispatch:
 
