@@ -1,14 +1,14 @@
 ---
-- name: Converge
+- name: USERAPPS | NodeJS | Molecule | Verify
   hosts: all
   gather_facts: false
   tasks:
-    - name: USERAPPS | NodeJS | Molecule | Import Roles for variables
+    - name: USERAPPS | NodeJS | Molecule | Verify | Import Roles for variables
       import_role:
         name: "arpanrec.server_workspace"
         tasks_from: prerequisites
 
-    - name: USERAPPS | NodeJS | Molecule | Get node version from shell
+    - name: USERAPPS | NodeJS | Molecule | Verify | Get node version from shell
       shell: |
         node --version
       environment:
@@ -16,11 +16,11 @@
       register: pv_ua_nodejs_version_shell_result
       changed_when: false
 
-    - name: USERAPPS | NodeJS | Molecule | nodejs version from shell result
+    - name: USERAPPS | NodeJS | Molecule | Verify | nodejs version from shell result
       debug:
         var: pv_ua_nodejs_version_shell_result
 
-    - name: USERAPPS | NodeJS | Molecule | Fail if nodejs version is not present
+    - name: USERAPPS | NodeJS | Molecule | Verify | Fail if nodejs version is not present
       assert:
         that: pv_ua_nodejs_version_shell_result.stdout is match("v{{  pv_ua_nodejs_version  }}\..*")
         success_msg: NodeJS Version {{  pv_ua_nodejs_version  }} is installed

@@ -1,9 +1,9 @@
 ---
-- name: Converge
+- name: USERAPPS | NodeJS | Molecule | Converge
   hosts: all
   gather_facts: false
   tasks:
-    - name: "Include NodeJS"
+    - name: USERAPPS | NodeJS | Molecule | Converge | Include NodeJS role
       include_role:
         name: "arpanrec.server_workspace"
         tasks_from: nodejs

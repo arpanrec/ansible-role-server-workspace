@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: USERAPPS | Golang | Molecule | Converge
   hosts: all
   gather_facts: false
   tasks:

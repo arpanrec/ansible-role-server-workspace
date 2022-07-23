@@ -1,5 +1,5 @@
 ---
-- name: USERAPPS | Oracle JDK | Prerequisites
+- name: USERAPPS | Golang | Prerequisites
   import_tasks: prerequisites.yml
 
 - name: USERAPPS | Golang | Create install directory

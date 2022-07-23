@@ -1,9 +1,9 @@
 ---
-- name: Converge
+- name: USERAPPS | Oracle JDK | Molecule | Converge
   hosts: all
   gather_facts: false
   tasks:
-    - name: USERAPPS | Oracle JDK | Molecule | Include tasks
+    - name: USERAPPS | Oracle JDK | Molecule | Converge | Include java role
       include_role:
         name: "arpanrec.server_workspace"
         tasks_from: java

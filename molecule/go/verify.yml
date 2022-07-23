@@ -1,14 +1,14 @@
 ---
-- name: Converge
+- name: USERAPPS | Golang | Molecule | Verify
   hosts: all
   gather_facts: false
   tasks:
-    - name: USERAPPS | Golang | Molecule | Import Roles for variables
+    - name: USERAPPS | Golang | Molecule | Verify | Import Roles for variables
       import_role:
         name: "arpanrec.server_workspace"
         tasks_from: prerequisites
 
-    - name: USERAPPS | Golang | Molecule | Get go version from shell
+    - name: USERAPPS | Golang | Molecule | Verify | Get go version from shell
       shell: |
         go version
       environment:
@@ -16,11 +16,11 @@
       register: pv_ua_golang_version_shell_result
       changed_when: false
 
-    - name: USERAPPS | Golang | Molecule | go version from shell result
+    - name: USERAPPS | Golang | Molecule | Verify | go version from shell result
       debug:
         var: pv_ua_golang_version_shell_result
 
-    - name: USERAPPS | Golang | Molecule | Fail if Go version is not present
+    - name: USERAPPS | Golang | Molecule | Verify | Fail if Go version is not present
       assert:
         that: pv_ua_golang_version_shell_result.stdout is match("go version go{{  pv_ua_golang_version  }}.*")
         success_msg: Go Version {{  pv_ua_golang_version  }} is installed
