@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: USERAPPS | NodeJS | Molecule | Import Roles for variables
+      import_role:
+        name: "arpanrec.server_workspace"
+        tasks_from: prerequisites
+
+    - name: USERAPPS | NodeJS | Molecule | Get node version from shell
+      shell: |
+        node --version
+      environment:
+        PATH: "{{  pv_ua_nodejs_install_path  }}/bin:{{  ansible_env.PATH  }}"
+      register: pv_ua_nodejs_version_shell_result
+      changed_when: false
+
+    - name: USERAPPS | NodeJS | Molecule | nodejs version from shell result
+      debug:
+        var: pv_ua_nodejs_version_shell_result
+
+    - name: USERAPPS | NodeJS | Molecule | Fail if nodejs version is not present
+      assert:
+        that: pv_ua_nodejs_version_shell_result.stdout is match("v{{  pv_ua_nodejs_version  }}\..*")
+        success_msg: NodeJS Version {{  pv_ua_nodejs_version  }} is installed
+        fail_msg: NodeJS Version {{  pv_ua_nodejs_version  }} is not installed, Shell result {{  pv_ua_nodejs_version_shell_result.stdout  }}
